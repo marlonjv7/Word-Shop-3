@@ -7,7 +7,7 @@ const NavBar = () => {
         <div>
             <Navbar bg="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Brand link</Navbar.Brand>
+                    <Navbar.Brand href="#home" className='text-white'>Brand link</Navbar.Brand>
                 </Container>
             </Navbar>
         </div>
