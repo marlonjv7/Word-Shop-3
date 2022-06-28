@@ -9,6 +9,10 @@ import PublicRoutes from "./PublicRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 import DashBoardRoutes from "./DashBoardRoutes";
 import { getUserAction } from "../redux/actions/user.action";
+import Intro from "../components/Intro";
+import Choose from "../components/Choose";
+import Sell from "../components/Sell";
+import Buy from "../components/Buy";
 
 const AppRoutes = () => {
   const [cheking, setCheking] = useState(true);
@@ -50,6 +54,42 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         {/* || -------------------- Public Routes -------------------- || */}
+
+        <Route
+          path="/intro"
+          element={
+            <PublicRoutes isLoggedIn={isLoggedIn}>
+              <Intro />
+            </PublicRoutes>
+          }
+        />
+
+        <Route
+          path="/choose"
+          element={
+            <PublicRoutes isLoggedIn={isLoggedIn}>
+              <Choose />
+            </PublicRoutes>
+          }
+        />
+
+        <Route
+          path="/sell"
+          element={
+            <PublicRoutes isLoggedIn={isLoggedIn}>
+              <Sell/>
+            </PublicRoutes>
+          }
+        />
+
+        <Route
+          path="/buy"
+          element={
+            <PublicRoutes isLoggedIn={isLoggedIn}>
+              <Buy />
+            </PublicRoutes>
+          }
+        />
 
         <Route
           path="/signin"
