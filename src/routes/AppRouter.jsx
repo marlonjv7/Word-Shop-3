@@ -5,7 +5,7 @@ import Choose from '../components/Choose';
 import Intro from '../components/Intro';
 import Sell from '../components/Sell';
 import Home from '../containers/Home';
-import AgregarEjercisio from '../components/AgregarEjercisio';
+// import AgregarEjercisio from '../components/AgregarEjercisio';
 
 
 
@@ -20,7 +20,7 @@ const AppRouter = () => {
         <Route path='/choose' element={<Choose />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/buy' element={<Buy />} />
-        <Route path="/AgregarEjercisio" element={<AgregarEjercisio/>}/>
+        {/* <Route path="/AgregarEjercisio" element={<AgregarEjercisio/>}/> */}
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </BrowserRouter>
