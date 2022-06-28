@@ -4,8 +4,6 @@ export const H1 = styled.h1`
 color: blue;
 `
 
-// intro
-
 export const IntroDiv = styled.div`
   @media screen and (min-width: 320px) and (max-width: 600px) {
     display: flex;
