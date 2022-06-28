@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
-import { Button } from "react-bootstrap";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import {
@@ -9,6 +8,7 @@ import {
   GoogleLoginAction,
   LoginActionAsync,
 } from "../../redux/actions/login.action";
+import { DivSocial, FacebookSignIn, FormSignIn, GoogleSignIn, ImgLogin, InputEmail, InputPassword, LoginBtn, SignInWith, SignUpWith, SiTitle } from "../../styles/StylesGlobals";
 
 // ------------ Yup Validation ------------ //
 
@@ -32,7 +32,8 @@ const SignIn = () => {
     <>
       <div className="auth">
         <div className="p-4 box">
-          <h2 className="mb-3">Login</h2>
+          <ImgLogin src="https://res.cloudinary.com/dg29vcpk7/image/upload/v1656444935/Bulletinboard/Logo_3_hdfpgj.png" alt="loginimg"/>
+          <SiTitle className="mb-3">Sign in</SiTitle>
           <Formik
             initialValues={{
               email: "",
@@ -44,11 +45,11 @@ const SignIn = () => {
             }}
           >
             {({ errors, touched }) => (
-              <Form>
+              <FormSignIn>
                 {errors.email && touched.email ? (
                   <div>{errors.email}</div>
                 ) : null}
-                <Field
+                <InputEmail
                   className="mb-3 form-control"
                   name="email"
                   placeholder="Email address"
@@ -57,7 +58,7 @@ const SignIn = () => {
                 {errors.password && touched.password ? (
                   <div>{errors.password}</div>
                 ) : null}
-                <Field
+                <InputPassword
                   className="mb-3 form-control"
                   type="password"
                   name="password"
@@ -65,26 +66,23 @@ const SignIn = () => {
                 />
 
                 <div className="d-grid gap-2">
-                  <Button variant="primary" type="Submit">
+                  <LoginBtn variant="primary" type="Submit">
                     Log In
-                  </Button>
+                  </LoginBtn>
                 </div>
-              </Form>
+              </FormSignIn>
             )}
           </Formik>
           <hr />
-          <div>
-            <Button onClick={() => dispatch(GoogleLoginAction())}>
-              Google
-            </Button>
-            <Button onClick={() => dispatch(FacebookLoginAction())}>
-              Facebook
-            </Button>
-          </div>
+                <SignInWith>Sign in with</SignInWith>
+          <DivSocial>
+            <GoogleSignIn src="https://res.cloudinary.com/dg29vcpk7/image/upload/v1656454141/Bulletinboard/google_bfkl3e.png" alt="google" onClick={() => dispatch(GoogleLoginAction())} />
+            <FacebookSignIn src="https://res.cloudinary.com/dg29vcpk7/image/upload/v1656454141/Bulletinboard/facebook_1_mqjbot.png" alt="facebook" onClick={() => dispatch(FacebookLoginAction())} />
+           </DivSocial>
         </div>
-        <div className="p-4 box mt-3 text-center">
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </div>
+        <SignUpWith className="p-4 box mt-3 text-center">
+          <p>Don't have an account? <Link to="/signup" style={{'textDecoration':'none'}}><span style={{'fontWeight':'500', 'color':'#6EC999'}} >Sign up</span></Link></p>
+        </SignUpWith>
       </div>
     </>
   );
