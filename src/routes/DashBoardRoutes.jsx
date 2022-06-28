@@ -1,15 +1,17 @@
-// import React from 'react'
-// import Home from '../containers/Home';
-// import { Navigate, Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import NavBars from "../components/NavBars";
+import Home from "../containers/Home";
 
-// const DashBoardRoutes = () => {
-//     return (
-//         <Routes>
-//             <Route path='/' element={<Home />} />
+const DashBoardRoutes = () => {
+  return (
+    <>
+      <NavBars />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
+  );
+};
 
-//             <Route path='*' element={<Navigate to='/' />} />
-//         </Routes>
-//     )
-// }
-
-// export default DashBoardRoutes;
+export default DashBoardRoutes;

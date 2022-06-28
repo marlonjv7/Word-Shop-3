@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../components/NavBar';
+import NavBar from '../components/NavBars';
 import { H1 } from '../styles/StylesGlobals';
 
 const Home = () => {
