@@ -1,10 +1,10 @@
 import { typesEjercisios } from "../types/types"
 import {  addDoc,collection, getDocs,query,where } from "firebase/firestore"
-import { DB } from "../../firebase/firebaseConfig"
+import { DataBase } from "../../firebase/firebaseConfig"
 
 export const searchEjercisioASync=(nombre)=>{
     return async(dispatch)=>{
-       const collectionAListar = collection(DB, "Compras")
+       const collectionAListar = collection(DataBase, "Compras")
         const q = query(collectionAListar,where("nombre", "==", nombre))
        const datosQ = await getDocs (q)
        
@@ -35,7 +35,7 @@ export const searchEjercisioSync=(Ejercisio)=>{
 
 export const listaEjercisiosASync = () =>{
     return async (dispatch) =>{
-       const collectionListar = await  getDocs(collection(DB,"Compras"))
+       const collectionListar = await  getDocs(collection(DataBase,"Compras"))
        console.log(collectionListar)
        const Ejercisios = []
        collectionListar.forEach(lista =>{
@@ -61,7 +61,7 @@ export const listaEjercisiosSync = (Ejercisio) =>{
 
 export const addEjercisioASync =(Ejercisio) =>{
      return async (dispatch)=>{
-        addDoc(collection(DB,"Compras"),Ejercisio)
+        addDoc(collection(DataBase,"Compras"),Ejercisio)
         .then(resp => dispatch (addEjercisioSync(Ejercisio)))
         .catch(error => console.warn(error))
     }

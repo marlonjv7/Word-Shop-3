@@ -55,7 +55,7 @@ const handleFileChange =(e)=>{
   return (
     <div>
     
-    <Box   component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
+    <Box  sx={{ bgcolor: 'info.main'}} component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
     <MyFormHelperText />
     <MyFormHelperText />
     <MyFormHelperText />
