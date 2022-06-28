@@ -4,6 +4,7 @@ import { H1 } from '../styles/StylesGlobals';
 import { logoutActionAsync } from '../redux/actions/login.action';
 import { useDispatch } from 'react-redux/es/exports';
 import { Button } from '@mui/material';
+import Main from '../cards/Main';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const Home = () => {
             <h2>hola</h2>
             <h4>release</h4>
             <h5>develop</h5>
+
+            <Main />
         </div>
     )
 }

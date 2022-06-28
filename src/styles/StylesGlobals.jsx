@@ -4,6 +4,72 @@ export const H1 = styled.h1`
 color: blue;
 `
 
+export const DIVCards = styled.div`
+    h2 {
+        color: #FFFFFF;
+    }
+
+    p {
+        color: #FFFFFF;
+    }
+
+.descript {
+    font-size: 10px;
+}
+`
+
+export const BTNLOGOUT = styled.button`
+    width: 100%;
+    border: none;
+    background-color: #B4FFD8;
+    border-radius: 12px;
+    color: #FFFFFF;
+    padding: 5px;
+
+    &:hover {
+        background-color: #2BE7E8;
+    }
+    &:focus {
+        background-color: #2BE7E8;
+    }
+`
+
+export const DIVCarrusel = styled.div`
+
+    display: flex;
+    flex-direction: column;
+
+    .Carru {
+        background-color: #B4FFD8;
+    }
+
+    h3 {
+        font-size: 15px !important;
+        width: 200px;
+    }
+
+    @media (min-width: 700px){
+        height: 400px;
+        
+        .DIVCARRU1 {
+            height: 80%;
+            width: 80%;
+        }
+
+        .Carru {
+            width: 100%;
+
+            img {
+                height: 250px;
+                width: 150px;
+            }
+        }
+        .DIVCARRU1 {
+            text-align: center;
+        }
+    }
+`
+
 export const IntroDiv = styled.div`
   @media screen and (min-width: 320px) and (max-width: 600px) {
     display: flex;
