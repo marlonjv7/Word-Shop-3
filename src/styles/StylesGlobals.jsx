@@ -4,7 +4,7 @@ export const H1 = styled.h1`
 color: blue;
 `
 
-export const NavBarSup = styled.div`
+export const NavBarSuperior = styled.div`
 max-width: 350px;
 margin: 0 auto;
     @media (min-width: 700px){
