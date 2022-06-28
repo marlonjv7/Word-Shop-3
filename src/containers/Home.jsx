@@ -1,7 +1,6 @@
 import React from 'react'
-import NavBar from '../components/NavBars';
-import { logoutActionAsync } from '../redux/actions/login.action';
 import { H1 } from '../styles/StylesGlobals';
+import { logoutActionAsync } from '../redux/actions/login.action';
 import { useDispatch } from 'react-redux/es/exports';
 import { Button } from '@mui/material';
 

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAsyncAction } from "../redux/actions/login.action";
@@ -26,9 +26,17 @@ const ChangeProfileDataSchema = Yup.object().shape({
 
 const UpdateProfile = () => {
   const dispatch = useDispatch();
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [enabled, setEnabled] = useState(false);
   const user = useSelector((state) => state.user);
-  console.log(user);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [user]);
+
+  if (isLoading) {
+    return <Spinner animation="border" variant="primary" />;
+  }
 
   return (
     <>
@@ -42,7 +50,14 @@ const UpdateProfile = () => {
             }}
             validationSchema={ChangeProfileDataSchema}
             onSubmit={(values) => {
-              dispatch(registerAsyncAction(values.email, values.password, values.name, values.phone));
+              dispatch(
+                registerAsyncAction(
+                  values.email,
+                  values.password,
+                  values.name,
+                  values.phone
+                )
+              );
             }}
           >
             {({ errors, touched }) => (
@@ -53,28 +68,62 @@ const UpdateProfile = () => {
                   type="name"
                   name="name"
                   placeholder="Name"
+                  value={user.providerData[0].displayName}
+                  disabled={!enabled}
                 />
-                {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                {errors.email && touched.email ? (
+                  <div>{errors.email}</div>
+                ) : null}
                 <Field
                   className="mb-3 form-control"
                   name="email"
                   placeholder="Email address"
+                  value={user.email}
+                  disabled={!enabled}
                 />
-                {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}
+                {errors.phone && touched.phone ? (
+                  <div>{errors.phone}</div>
+                ) : null}
                 <Field
                   className="mb-3 form-control"
                   type="phone"
                   name="phone"
                   placeholder="Phone"
+                  // value={user.providerData[0].phoneNumber}
+                  disabled={!enabled}
                 />
                 <div className="d-grid gap-2">
-                  <Button variant="primary" type="Submit">
-                    Change Profile
-                  </Button>
+                  {enabled && (
+                    <>
+                      <Button
+                        variant="primary"
+                        type="Submit"
+                        onClick={() => setEnabled(true)}
+                      >
+                        Confirm
+                      </Button>
+                      <Button
+                        variant="primary"
+                        type="Submit"
+                        onClick={() => setEnabled(false)}
+                      >
+                        Cancel
+                      </Button>
+                    </>
+                  )}
                 </div>
               </Form>
             )}
           </Formik>
+          {!enabled && (
+            <Button
+              variant="primary"
+              type="Submit"
+              onClick={() => setEnabled(true)}
+            >
+              Edit
+            </Button>
+          )}
         </div>
       </div>
     </>
