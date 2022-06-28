@@ -7,6 +7,7 @@ import NavBars from "../components/NavBars";
 import Sell from "../components/Sell";
 import Home from "../containers/Home";
 import UpdateProfile from "../containers/UpdateProfile";
+import AgregarEjercisio from "../components/AgregarEjercisio";
 
 const DashBoardRoutes = () => {
   return (
@@ -19,7 +20,7 @@ const DashBoardRoutes = () => {
         <Route path='/choose' element={<Choose />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/buy' element={<Buy />} />
-        {/* <Route path="/AgregarEjercisio" element={<AgregarEjercisio/>}/> */}
+       <Route path="/AgregarEjercisio" element={<AgregarEjercisio/>}/> 
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </>
