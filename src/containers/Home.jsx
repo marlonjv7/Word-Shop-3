@@ -9,6 +9,7 @@ const Home = () => {
             <h3>feacture</h3>
             <h2>hola</h2>
             <h4>release</h4>
+            <h5>develop</h5>
             <NavBar />
         </div>
     )
