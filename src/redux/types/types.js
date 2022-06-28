@@ -3,3 +3,7 @@ export const typesLogin = {
     logout: 'logout',
     register: 'register',
 }
+
+export const typesUser = {
+    getUser: 'getUser',
+}

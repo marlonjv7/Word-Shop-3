@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import PublicRoutes from "./PublicRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 import DashBoardRoutes from "./DashBoardRoutes";
+import { getUserAction } from "../redux/actions/user.action";
 
 const AppRoutes = () => {
   const [cheking, setCheking] = useState(true);
@@ -22,6 +23,7 @@ const AppRoutes = () => {
       if (user?.uid) {
         setIsLoggedIn(true);
         setUserData(user);
+        dispatch(getUserAction(userData));
       } else {
         setIsLoggedIn(false);
         setUserData(null);
@@ -29,6 +31,12 @@ const AppRoutes = () => {
       setCheking(false);
     });
   }, [setIsLoggedIn, setCheking]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(getUserAction(userData));
+    }
+  }, [isLoggedIn]);
 
   if (cheking) {
     return (
