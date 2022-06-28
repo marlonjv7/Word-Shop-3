@@ -7,3 +7,8 @@ export const typesLogin = {
 export const typesUser = {
     getUser: 'getUser',
 }
+
+export const typesEjercisios = {
+    add: "agregar ejercisio",
+    list: "lista de Ejercisios",
+}

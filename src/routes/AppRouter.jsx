@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import SignIn from "../containers/auth/SignIn";
 import SignUp from "../containers/auth/SignUp";
 import { useDispatch } from "react-redux";
@@ -83,6 +83,7 @@ const AppRoutes = () => {
         />
 
         {/* || -------------------- End of Private Routes -------------------- || */}
+
       </Routes>
     </BrowserRouter>
   );

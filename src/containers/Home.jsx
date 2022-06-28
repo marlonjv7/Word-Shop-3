@@ -1,4 +1,5 @@
 import React from 'react'
+// import NavBar from '../components/NavBar';
 import { H1 } from '../styles/StylesGlobals';
 import { logoutActionAsync } from '../redux/actions/login.action';
 import { useDispatch } from 'react-redux/es/exports';

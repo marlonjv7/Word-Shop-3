@@ -2,17 +2,15 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import AppRouter from './routes/AppRouter';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { store } from "./redux/store/store"
 import './styles/style.css';
-import { Store } from './redux/store/Store';
+import './styles/StylesGlobals'
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={Store}>
-      <AppRouter />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );

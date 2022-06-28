@@ -32,6 +32,7 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     setIsLoading(false);
+    console.log(user)
   }, [user]);
 
   if (isLoading) {
