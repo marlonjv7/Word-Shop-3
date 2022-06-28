@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
-import { Button } from "react-bootstrap";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { registerAsyncAction } from "../../redux/actions/login.action";
+import { FacebookLoginAction, GoogleLoginAction, registerAsyncAction } from "../../redux/actions/login.action";
+import { DivSocial2, FacebookSignUp, GoogleSignUp, ImgLogin, InputConfirm, InputEmail2, InputName, InputPassword2, InputPhone, SignInWith, SignUpBtn, SignUpWith, SiTitle } from "../../styles/StylesGlobals";
 
 // ------------ Yup Validation ------------ //
 
@@ -39,7 +39,8 @@ const SignUp = () => {
     <>
       <div className="auth">
         <div className="p-4 box">
-          <h2 className="mb-3">Signup</h2>
+          <ImgLogin src="https://res.cloudinary.com/dg29vcpk7/image/upload/v1656444935/Bulletinboard/Logo_3_hdfpgj.png" alt="logoapp"/>
+          <SiTitle className="mb-3">Signup</SiTitle>
           <Formik
             initialValues={{
               email: "",
@@ -56,21 +57,21 @@ const SignUp = () => {
             {({ errors, touched }) => (
               <Form>
                 {errors.name && touched.name ? <div>{errors.name}</div> : null}
-                <Field
+                <InputName
                   className="mb-3 form-control"
                   type="name"
                   name="name"
                   placeholder="Name"
                 />
                 {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}
-                <Field
+                <InputPhone
                   className="mb-3 form-control"
                   type="phone"
                   name="phone"
                   placeholder="Phone"
                 />
                 {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                <Field
+                <InputEmail2
                   className="mb-3 form-control"
                   name="email"
                   placeholder="Email address"
@@ -79,7 +80,7 @@ const SignUp = () => {
                 {errors.password && touched.password ? (
                   <div>{errors.password}</div>
                 ) : null}
-                <Field
+                <InputPassword2
                   className="mb-3 form-control"
                   type="password"
                   name="password"
@@ -89,7 +90,7 @@ const SignUp = () => {
                 {errors.passwordConfirm && touched.passwordConfirm ? (
                   <div>{errors.passwordConfirm}</div>
                 ) : null}
-                <Field
+                <InputConfirm
                   className="mb-3 form-control"
                   type="password"
                   name="passwordConfirm"
@@ -97,17 +98,24 @@ const SignUp = () => {
                 />
         
                 <div className="d-grid gap-2">
-                  <Button variant="primary" type="Submit">
+                  <SignUpBtn variant="primary" type="Submit">
                     Sign Up
-                  </Button>
+                  </SignUpBtn>
                 </div>
               </Form>
             )}
           </Formik>
         </div>
-        <div className="p-4 box mt-3 text-center">
-          Already have an account? <Link to="/login">Log In</Link>
-        </div>
+        
+        <SignInWith>Sign up with</SignInWith>
+        <DivSocial2>
+            <GoogleSignUp src="https://res.cloudinary.com/dg29vcpk7/image/upload/v1656454141/Bulletinboard/google_bfkl3e.png" alt="google" onClick={() => dispatch(GoogleLoginAction())} />
+            <FacebookSignUp src="https://res.cloudinary.com/dg29vcpk7/image/upload/v1656454141/Bulletinboard/facebook_1_mqjbot.png" alt="facebook" onClick={() => dispatch(FacebookLoginAction())} />
+           </DivSocial2>
+
+        <SignUpWith className="p-4 box mt-3 text-center">
+          <p>Already have an account?<Link to="/login" style={{'textDecoration':'none'}}><span style={{'fontWeight':'500', 'color':'#6EC999'}} > Log in</span></Link></p> 
+        </SignUpWith>
       </div>
     </>
   );

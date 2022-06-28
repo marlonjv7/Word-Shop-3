@@ -14,7 +14,7 @@ const Buy = () => {
                 <Link to="/sell"><OthersLi>a</OthersLi></Link>
                 <Link to="/buy"><FirstLi>a</FirstLi></Link>
             </UlSlide>
-            <Link to="/" style={{'textDecoration':'none'}}><BtnNextOne>Next</BtnNextOne></Link>
+            <Link to="/signup" style={{'textDecoration':'none'}}><BtnNextOne>Next</BtnNextOne></Link>
 
     </>
    </>

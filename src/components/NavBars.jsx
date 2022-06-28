@@ -16,6 +16,8 @@ const NavBars = () => {
             <Nav.Link onClick={()=> navigate("/")} >Home</Nav.Link>
             <Nav.Link onClick={()=> navigate("/update-profile")} >Update Profile</Nav.Link>
             <Nav.Link onClick={()=> navigate("/AgregarEjercisio")} >Update Profile</Nav.Link>
+            <Nav.Link onClick={()=> navigate("/About")} >About Us</Nav.Link>
+            <Nav.Link onClick={()=> navigate("/Terms")} >Terms</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
