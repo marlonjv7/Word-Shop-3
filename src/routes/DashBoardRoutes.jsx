@@ -20,7 +20,8 @@ const DashBoardRoutes = () => {
         <Route path='/choose' element={<Choose />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/buy' element={<Buy />} />
-       <Route path="/AgregarEjercisio" element={<AgregarEjercisio/>}/> 
+        <Route path="/AgregarEjercisio" element={<AgregarEjercisio />} />
+
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </>
