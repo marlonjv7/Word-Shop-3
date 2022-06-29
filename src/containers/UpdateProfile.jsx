@@ -69,7 +69,7 @@ const UpdateProfile = () => {
                   type="name"
                   name="name"
                   placeholder="Name"
-                  value={user.providerData[0].displayName}
+                  // value={user.providerData[0].displayName}
                   disabled={!enabled}
                 />
                 {errors.email && touched.email ? (
@@ -79,7 +79,7 @@ const UpdateProfile = () => {
                   className="mb-3 form-control"
                   name="email"
                   placeholder="Email address"
-                  value={user.email}
+                  // value={user.email}
                   disabled={!enabled}
                 />
                 {errors.phone && touched.phone ? (
