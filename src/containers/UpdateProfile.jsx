@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Image, Spinner } from "react-bootstrap";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { registerAsyncAction } from "../redux/actions/login.action";
+import { updateUserActionAsync } from "../redux/actions/updateUser.action";
 
 // ------------ Yup Validation ------------ //
 
@@ -28,11 +28,32 @@ const UpdateProfile = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [enabled, setEnabled] = useState(false);
+  const [success, setSuccess] = useState(false);
   const user = useSelector((state) => state.user);
+  const [newUser, setNewUser] = useState({
+    email: "",
+    name: "",
+    phone: "",
+  });
+
+  const updateUser = (values) => {
+    setNewUser({
+      email: values.email,
+      name: values.name,
+      phone: values.phone,
+    });
+    console.log("dasdasd")
+    if (values.email !== user.email || values.name !== user.displayName) {
+      dispatch(updateUserActionAsync(newUser));
+      setSuccess(true);
+      setEnabled(true);
+      console.log(values.name);
+    }
+  };
 
   useEffect(() => {
     setIsLoading(false);
-    console.log(user)
+    setEnabled(true);
   }, [user]);
 
   if (isLoading) {
@@ -51,18 +72,12 @@ const UpdateProfile = () => {
             }}
             validationSchema={ChangeProfileDataSchema}
             onSubmit={(values) => {
-              dispatch(
-                registerAsyncAction(
-                  values.email,
-                  values.password,
-                  values.name,
-                  values.phone
-                )
-              );
+              updateUser(values);
             }}
           >
             {({ errors, touched }) => (
               <Form>
+                <Image src={user.photoURL} roundedCircle className="avatar" />
                 {errors.name && touched.name ? <div>{errors.name}</div> : null}
                 <Field
                   className="mb-3 form-control"
@@ -70,7 +85,8 @@ const UpdateProfile = () => {
                   name="name"
                   placeholder="Name"
                   // value={user.providerData[0].displayName}
-                  disabled={!enabled}
+                  // disabled={!enabled}
+                  disabled={enabled}
                 />
                 {errors.email && touched.email ? (
                   <div>{errors.email}</div>
@@ -80,7 +96,8 @@ const UpdateProfile = () => {
                   name="email"
                   placeholder="Email address"
                   // value={user.email}
-                  disabled={!enabled}
+                  // disabled={!enabled}
+                  disabled={enabled}
                 />
                 {errors.phone && touched.phone ? (
                   <div>{errors.phone}</div>
@@ -90,23 +107,18 @@ const UpdateProfile = () => {
                   type="phone"
                   name="phone"
                   placeholder="Phone"
-                  // value={user.providerData[0].phoneNumber}
-                  disabled={!enabled}
+                  disabled={enabled}
                 />
                 <div className="d-grid gap-2">
-                  {enabled && (
+                  {!enabled && (
                     <>
-                      <Button
-                        variant="primary"
-                        type="Submit"
-                        onClick={() => setEnabled(true)}
-                      >
+                      <Button variant="primary" type="Submit">
                         Confirm
                       </Button>
                       <Button
                         variant="primary"
-                        type="Submit"
-                        onClick={() => setEnabled(false)}
+                        type="Button"
+                        onClick={() => setEnabled(!enabled)}
                       >
                         Cancel
                       </Button>
@@ -116,11 +128,11 @@ const UpdateProfile = () => {
               </Form>
             )}
           </Formik>
-          {!enabled && (
+          {enabled && (
             <Button
               variant="primary"
               type="Submit"
-              onClick={() => setEnabled(true)}
+              onClick={() => setEnabled(!enabled)}
             >
               Edit
             </Button>

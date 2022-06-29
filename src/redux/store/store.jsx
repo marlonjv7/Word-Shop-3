@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { EjercisioReducers } from "../reducers/EjercisioReducers";
 import { loginReducers } from "../reducers/login.reducers";
+import { updateUserReducer } from "../reducers/updateUser.reducer";
 import { userReducer } from "../reducers/user.reducer";
 // hola esto es una pruba y no tiene que ver con el codigo 
 
@@ -11,11 +12,11 @@ const reducers= combineReducers({
     Ejercisios: EjercisioReducers,
     login: loginReducers,
     user: userReducer,
+    updateUser: updateUserReducer,
 });
 export const store = createStore(
     reducers,
     composeEnhancers(
         applyMiddleware(thunk)
     )
-
 );
